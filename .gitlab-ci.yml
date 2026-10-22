@@ -1,0 +1,42 @@
+image: node:22-bookworm
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+    - if: '$CI_COMMIT_TAG'
+
+stages: [verify, acceptance]
+
+variables:
+  GIT_DEPTH: "0"
+
+verify:
+  stage: verify
+  timeout: 15m
+  script:
+    - bash scripts/ci.sh
+
+secrets:
+  stage: verify
+  timeout: 5m
+  script:
+    - bash scripts/scan-secrets.sh
+
+browser:
+  stage: acceptance
+  timeout: 15m
+  variables:
+    PLAYWRIGHT_BROWSERS_PATH: /opt/playwright
+  script:
+    - npm ci --no-fund
+    - npx playwright install --with-deps chromium
+    - chown -R node:node "$CI_PROJECT_DIR"
+    - runuser -u node -- bash scripts/ci-browser.sh
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - .local/*.png

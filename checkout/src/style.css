@@ -1,0 +1,40 @@
+@import "../../shared/theme.css";
+
+@layer components {
+  .checkout { @apply mx-auto max-w-xl px-4 py-8 md:py-12; }
+  .checkout-header { @apply mb-6 flex items-center gap-3 text-sm font-semibold; }
+  .checkout-mark { @apply flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white; }
+  .checkout-header .secure { @apply ml-auto flex items-center gap-1.5 text-xs font-normal text-muted-foreground; }
+  .checkout-card { @apply gap-0 py-0; }
+  .checkout-content { @apply space-y-4 p-5 sm:p-6; }
+  .checkout .eyebrow, .checkout .label { @apply text-xs font-medium text-muted-foreground; }
+  .checkout .amount { @apply mt-2 flex flex-wrap items-baseline gap-2 text-4xl font-semibold tracking-tight; }
+  .checkout .amount span { @apply text-xl font-normal text-muted-foreground; }
+  .checkout .network { @apply flex items-center gap-2 text-sm text-muted-foreground; }
+  .checkout .badge { @apply rounded border border-indigo-500/20 bg-indigo-500/10 px-1.5 py-0.5 text-[10px] font-medium text-indigo-400; }
+  .checkout h1 { @apply text-xl font-semibold; }
+  .checkout p { @apply text-sm leading-relaxed; }
+  .checkout .description { @apply text-muted-foreground; }
+  .checkout .tabs { @apply flex gap-1 rounded-lg bg-muted/50 p-1; }
+  .checkout .tabs button { @apply flex-1 text-xs sm:text-sm; }
+  .checkout .tabs button[aria-selected=true] { @apply bg-card text-foreground shadow-sm; }
+  .checkout .tabs button[aria-selected=false] { @apply text-muted-foreground; }
+  .checkout .wallet { @apply space-y-3; }
+  .checkout .wallet-choice { @apply flex h-11 w-full justify-between; }
+  .checkout .primary { @apply h-10 w-full; }
+  .checkout .text-button { @apply mx-auto flex text-muted-foreground; }
+  .checkout .muted { @apply text-xs text-muted-foreground; overflow-wrap: anywhere; }
+  .checkout .details { @apply space-y-4 border-t border-border pt-5; }
+  .checkout .copy-row { @apply flex items-center gap-3; }
+  .checkout .copy-row code { @apply min-w-0 flex-1 break-all font-mono text-xs leading-relaxed; }
+  .checkout .detail-row { @apply flex items-center justify-between gap-3 text-xs; }
+  .checkout .detail-row > span:first-child { @apply text-muted-foreground; }
+  .checkout .qr { @apply mx-auto block h-auto w-52 max-w-full rounded-lg bg-white p-2; }
+  .checkout .manual { @apply space-y-4 text-center; }
+  .checkout .notice { @apply rounded-lg border border-amber-500/20 bg-amber-500/10 p-3 text-sm leading-relaxed text-amber-200; }
+  .checkout .notice code { @apply mt-2 block break-all font-mono text-xs; }
+  .checkout .success { @apply space-y-3 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-green-400; }
+  .checkout .error { @apply rounded-md bg-destructive/10 p-3 text-sm text-destructive; }
+  .checkout .copy-message { @apply min-h-4 text-xs text-indigo-400; }
+  .checkout footer { @apply mt-5 text-center text-xs text-muted-foreground; }
+}
